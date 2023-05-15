@@ -13,7 +13,7 @@ resource "aws_cloudwatch_metric_alarm" "free_storage_space" {
   alarm_description = "Alert when FreeStorageSpace <= 20480, 1 time within 1 minute"
   namespace         = "AWS/RDS"
   dimensions        = {
-    DbInstanceIdentifier = data.aws_db_instance.target.db_name
+    DBInstanceIdentifier = data.aws_db_instance.target.db_name
   }
   statistic           = "Minimum"
   metric_name         = "FreeStorageSpace"
@@ -34,7 +34,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu_utilization" {
   alarm_description = "Alert when CPUUtilization >=${var.cpu_utilization_threshold}, ${var.cpu_utilization_evaluation_periods} time within ${var.cpu_utilization_period} seconds"
   namespace         = "AWS/RDS"
   dimensions        = {
-    DbInstanceIdentifier = data.aws_db_instance.target.db_name
+    DBInstanceIdentifier = data.aws_db_instance.target.db_name
   }
   statistic           = "Maximum"
   metric_name         = "CPUUtilization"
