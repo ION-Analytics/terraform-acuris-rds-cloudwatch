@@ -14,7 +14,7 @@ resource "aws_cloudwatch_metric_alarm" "free_storage_space" {
   namespace         = "AWS/RDS"
   dimensions        = {
     ClientId   = data.aws_caller_identity.current.account_id
-    DomainName = data.aws_db_instance.target.db_name
+    DbInstanceIdentifier = data.aws_db_instance.target.db_name
   }
   statistic           = "Minimum"
   metric_name         = "FreeStorageSpace"
@@ -36,7 +36,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu_utilization" {
   namespace         = "AWS/RDS"
   dimensions        = {
     ClientId   = data.aws_caller_identity.current.account_id
-    DomainName = data.aws_db_instance.target.db_name
+    DbInstanceIdentifier = data.aws_db_instance.target.db_name
   }
   statistic           = "Maximum"
   metric_name         = "CPUUtilization"
