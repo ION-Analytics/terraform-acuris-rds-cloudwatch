@@ -20,7 +20,7 @@ resource "aws_cloudwatch_metric_alarm" "free_storage_space" {
   comparison_operator = "LessThanOrEqualToThreshold"
   threshold           = var.free_storage_space_threshold 
   period              = 60
-  evaluation_periods  = 1
+  evaluation_periods  = 3
   ok_actions          = [
     aws_sns_topic.alarms.arn
   ]
